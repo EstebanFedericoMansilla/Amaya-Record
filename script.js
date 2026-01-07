@@ -120,6 +120,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Protection Form Submission to WhatsApp
+    const protectionForm = document.getElementById('form-proteccion');
+    if (protectionForm) {
+        protectionForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const nombre = document.getElementById('prot-nombre').value;
+            const tipo = document.getElementById('prot-tipo').value;
+            const mensaje = document.getElementById('prot-mensaje').value;
+
+            const message = `Hola Facundo! 🛡️%0A%0AHe completado el formulario de *Protección de Obras* en la web:%0A%0A👤 *Nombre:* ${nombre}%0A📁 *Tipo de registro:* ${tipo}%0A💬 *Consulta:* ${mensaje}%0A%0A⚖️ ¡Necesito asesoría para proteger mi música!`;
+
+            const whatsappUrl = `https://wa.me/5491159003781?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    }
+
     // Smooth scroll for "Elegir Plan" buttons
     document.querySelectorAll('.select-plan').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -131,3 +148,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
